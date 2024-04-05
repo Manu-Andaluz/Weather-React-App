@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RegisterService {
-  private path = `http://localhost:8000/auth/register/`;
+  private path = `https://guardkey-production.up.railway.app/auth/register/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

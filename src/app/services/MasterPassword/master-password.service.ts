@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class MasterPasswordService {
-  private path = `http://localhost:8000/manager/create-master-password/`;
+  private path = `https://guardkey-production.up.railway.app/manager/create-master-password/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

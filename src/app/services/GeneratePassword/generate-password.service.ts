@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GeneratePasswordService {
-  private path = `http://localhost:8000/manager/generate-password/`;
+  private path = `https://guardkey-production.up.railway.app/manager/generate-password/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

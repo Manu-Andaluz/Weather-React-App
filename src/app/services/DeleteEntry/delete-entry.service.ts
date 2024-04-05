@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class DeleteEntryService {
-  private path = `http://localhost:8000/manager/delete-entry/`;
+  private path = `https://guardkey-production.up.railway.app/manager/delete-entry/`;
 
   constructor(private httpClient: HttpClient) {}
 
