@@ -10,7 +10,6 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "@ionic/angular/css/core.css";
 
 @import "./variables";
 
@@ -23,6 +22,11 @@
   margin: 0;
   padding: 0;
   color: #eee;
+}
+
+html {
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes fadeIn {

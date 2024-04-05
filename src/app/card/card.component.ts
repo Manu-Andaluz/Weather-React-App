@@ -16,7 +16,7 @@ export class CardComponent {
   @Input() website_url: string = '';
   @Input() password_quantity: number = 1;
   @Input() item_id?: string;
-  @Output() onClick: EventEmitter<any> = new EventEmitter();
+  @Output() eventClick: EventEmitter<any> = new EventEmitter();
   private master_password: string | undefined = undefined;
 
   constructor(private service: DeleteEntryService) {}
