@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RefreshTokenService {
-  private path = `https://guardkey-production.up.railway.app/auth/refresh-token/`;
+  private path = `https://manuandaluz.pythonanywhere.com/auth/refresh-token/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class LoginService {
-  private path = `https://guardkey-production.up.railway.app/auth/login/`;
+  private path = `https://manuandaluz.pythonanywhere.com/auth/login/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

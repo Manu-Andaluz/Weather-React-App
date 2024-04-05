@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class DeleteEntryService {
-  private path = `https://guardkey-production.up.railway.app/manager/delete-entry/`;
+  private path = `https://manuandaluz.pythonanywhere.com/manager/delete-entry/`;
 
   constructor(private httpClient: HttpClient) {}
 

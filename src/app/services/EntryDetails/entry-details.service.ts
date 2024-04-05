@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class EntryDetailsService {
-  private path = `https://guardkey-production.up.railway.app/manager/retrieve-entries/`;
+  private path = `https://manuandaluz.pythonanywhere.com/manager/retrieve-entries/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
