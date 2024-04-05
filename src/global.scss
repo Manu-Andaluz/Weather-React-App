@@ -1,0 +1,243 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+@import "./variables";
+
+:root {
+  color-scheme: light dark;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: #eee;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  justify-content: center;
+  width: fit-content;
+  animation: fadeIn 500ms ease;
+
+  &.submit {
+    transition: background 300ms ease;
+    background-color: $primary-blue-dark;
+
+    &:hover {
+      background-color: $primary-blue;
+    }
+  }
+
+  &.lined {
+    border: 1px solid $primary-border;
+    transition: background 300ms ease;
+
+    &:hover {
+      background-color: $primary-border;
+    }
+  }
+
+  &.outlined {
+    transition: background 300ms ease;
+    border: 1px solid $primary-border;
+    background-color: gray;
+
+    &:hover {
+    }
+  }
+
+  &.link {
+  }
+
+  &.alternative {
+    background-color: $secondary-color-dark;
+    transition: background 300ms ease;
+
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  &.blocked {
+    transition: background 300ms ease;
+    border: 1px solid $primary-border;
+    background-color: gray;
+    cursor: not-allowed;
+
+    &:hover {
+    }
+  }
+}
+
+/* modal */
+
+.dialog {
+  margin: auto;
+  padding: 0;
+  border: none;
+  outline: none;
+  display: grid;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  border-radius: 16px;
+
+  form {
+    display: grid;
+    justify-items: center;
+    svg {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      cursor: pointer;
+    }
+
+    h2 {
+      margin: 10px 0;
+      font-size: 28px;
+      text-align: center;
+
+      @media (max-width: 500px) {
+        font-size: 24px;
+      }
+    }
+
+    input {
+      height: 48px;
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin: 10px 0;
+    }
+
+    div {
+      margin: 10px auto;
+      display: flex;
+      gap: 10px;
+    }
+  }
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: forwards;
+  padding: 0;
+}
+
+@media (min-width: 600px) {
+  .dialog::backdrop {
+    backdrop-filter: blur(16px) saturate(150%);
+  }
+}
+
+.dialog[open] {
+  display: grid;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+
+  max-width: calc((100%) - 3em);
+  max-height: calc((100%) - 3rem);
+
+  animation-name: dialogIn;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: forwards;
+  background: none;
+  background-color: $primary-dark;
+  padding: 20px;
+}
+
+.dialog:not([open]) {
+  pointer-events: none;
+  opacity: 0;
+}
+.close[open] {
+  animation-name: dialogOut;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: forwards;
+}
+
+.close::backdrop {
+  animation-name: fadeOut;
+  animation-duration: 500ms;
+  animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes dialogIn {
+  from {
+    opacity: 0;
+    transform: scale(115%);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(100%);
+  }
+}
+
+@keyframes dialogOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

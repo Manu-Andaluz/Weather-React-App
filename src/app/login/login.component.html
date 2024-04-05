@@ -1,0 +1,39 @@
+<app-navbar />
+<section class="login_container">
+  <h1>Sign in</h1>
+
+  <form id="login_form">
+    <div>
+      <label for="username">Username*</label>
+      <input
+        placeholder="EltonJohn"
+        name="username"
+        id="username"
+        type="text"
+        autocomplete="off"
+      />
+      <p *ngIf="errors.username" class="error">{{ errors.username }}</p>
+    </div>
+
+    <div>
+      <label for="password">Password*</label>
+      <input
+        placeholder="********"
+        name="password"
+        id="password"
+        type="password"
+        autocomplete="off"
+      />
+      <p *ngIf="errors.password" class="error">{{ errors.password }}</p>
+    </div>
+    <p *ngIf="login_error" class="error" style="margin: auto">
+      {{ login_error }}
+    </p>
+
+    <button (click)="login($event)" class="button alternative">
+      {{ submit_text_btn }}
+    </button>
+  </form>
+
+  <a routerLink="/register" class="button">Create an account</a>
+</section>

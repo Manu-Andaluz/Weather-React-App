@@ -1,0 +1,67 @@
+@import "../../variables";
+
+.card {
+  display: grid;
+  width: 360px;
+  border: 1px solid $primary-border;
+  border-radius: 4px;
+  animation: fadeIn 500ms ease;
+
+  @media (max-width: 430px) {
+    width: 300px;
+  }
+
+  img {
+    width: 360px;
+    height: 200px;
+    max-width: 100%;
+    border-radius: 4px 4px 0 0;
+
+    @media (max-width: 430px) {
+      width: 300px;
+    }
+  }
+
+  .card_info {
+    display: grid;
+    margin: 14px 0 16px 0;
+    gap: 20px;
+    padding-inline: 14px;
+
+    h4 {
+      font-size: 18px;
+      white-space: nowrap; /* Prevent text from wrapping to the next line */
+      overflow: hidden; /* Hide content that overflows the container */
+      text-overflow: ellipsis;
+      max-width: 190px;
+    }
+
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      p:first-child {
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+        overflow: hidden; /* Hide content that overflows the container */
+        text-overflow: ellipsis;
+        max-width: 190px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .card_buttons {
+    display: flex;
+    gap: 4px;
+
+    button,
+    a {
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 400;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+<app-navbar />
+<section class="register_container">
+  <h1>Register</h1>
+  <form id="register_form">
+    <div>
+      <label for="username">Username*</label>
+      <input
+        placeholder="Username"
+        name="username"
+        id="username"
+        type="text"
+        autocomplete="false"
+      />
+      <p *ngIf="errors.username" class="error">{{ errors.username }}</p>
+    </div>
+
+    <div>
+      <label for="email">Email*</label>
+      <input
+        placeholder="Email"
+        name="email"
+        id="email"
+        type="email"
+        autocomplete="off"
+      />
+      <p *ngIf="errors.email" class="error">{{ errors.email }}</p>
+    </div>
+
+    <div>
+      <label for="password">Account Password*</label>
+      <input
+        placeholder="********"
+        name="password"
+        id="password"
+        type="password"
+        autocomplete="off"
+      />
+      <p *ngIf="errors.password" class="error">{{ errors.password }}</p>
+    </div>
+
+    <p *ngIf="register_error" class="error" style="margin: auto">
+      {{ register_error }}
+    </p>
+
+    <button class="button alternative" (click)="register($event)">
+      Continue
+    </button>
+  </form>
+
+  <a routerLink="/login" class="button">Log in with an account</a>
+</section>

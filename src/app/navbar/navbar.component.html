@@ -1,0 +1,13 @@
+<header class="landing_nav">
+  <nav>
+    <a routerLink="/"
+      >Guard<span>Key</span>
+      <img src="../../assets/coffee.svg" width="50" height="50" alt="Logo" />
+    </a>
+
+    <ul>
+      <li *ngIf="isUser"><a (click)="logout()">Logout</a></li>
+      <li *ngIf="!isUser"><a routerLink="/login">Sign In</a></li>
+    </ul>
+  </nav>
+</header>

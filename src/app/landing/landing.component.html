@@ -1,0 +1,112 @@
+<app-navbar />
+<section class="landing_container">
+  <h1>GuardKey Password Manager</h1>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic cumque
+    aliquam, eum sunt libero itaque exercitationem ducimus aut minima. Ratione
+    dolores maiores praesentium placeat quia alias, reiciendis earum iste non.
+  </p>
+
+  <div class="button_container">
+    <a *ngIf="isUser" routerLink="/create-password" class="button submit">
+      Create new entry
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 9.4C3 7.15979 3 6.03969 3.43597 5.18404C3.81947 4.43139 4.43139 3.81947 5.18404 3.43597C6.03969 3 7.15979 3 9.4 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V14.6C21 16.8402 21 17.9603 20.564 18.816C20.1805 19.5686 19.5686 20.1805 18.816 20.564C17.9603 21 16.8402 21 14.6 21H9.4C7.15979 21 6.03969 21 5.18404 20.564C4.43139 20.1805 3.81947 19.5686 3.43597 18.816C3 17.9603 3 16.8402 3 14.6V9.4Z"
+          fill="#e2e2e2"
+          fill-opacity="0.25"
+        />
+        <path d="M12 8L12 16" stroke="#e2e2e2" stroke-linejoin="round" />
+        <path d="M16 12L8 12" stroke="#e2e2e2" stroke-linejoin="round" />
+      </svg>
+    </a>
+
+    <a *ngIf="!isUser" class="button blocked">
+      Create new entry
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 9.4C3 7.15979 3 6.03969 3.43597 5.18404C3.81947 4.43139 4.43139 3.81947 5.18404 3.43597C6.03969 3 7.15979 3 9.4 3H14.6C16.8402 3 17.9603 3 18.816 3.43597C19.5686 3.81947 20.1805 4.43139 20.564 5.18404C21 6.03969 21 7.15979 21 9.4V14.6C21 16.8402 21 17.9603 20.564 18.816C20.1805 19.5686 19.5686 20.1805 18.816 20.564C17.9603 21 16.8402 21 14.6 21H9.4C7.15979 21 6.03969 21 5.18404 20.564C4.43139 20.1805 3.81947 19.5686 3.43597 18.816C3 17.9603 3 16.8402 3 14.6V9.4Z"
+          fill="#e2e2e2"
+          fill-opacity="0.25"
+        />
+        <path d="M12 8L12 16" stroke="#e2e2e2" stroke-linejoin="round" />
+        <path d="M16 12L8 12" stroke="#e2e2e2" stroke-linejoin="round" />
+      </svg>
+    </a>
+
+    <a class="button alternative" [routerLink]="['/generate-password']">
+      Generate random password
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M3 11C3 7.22876 3 5.34315 4.17157 4.17157C5.34315 3 7.22876 3 11 3H13C16.7712 3 18.6569 3 19.8284 4.17157C21 5.34315 21 7.22876 21 11V13C21 16.7712 21 18.6569 19.8284 19.8284C18.6569 21 16.7712 21 13 21H11C7.22876 21 5.34315 21 4.17157 19.8284C3 18.6569 3 16.7712 3 13V11Z"
+          fill="#e2e2e2"
+          fill-opacity="0.25"
+        />
+        <circle cx="8.5" cy="11.5" r="2" stroke="#e2e2e2" />
+        <path
+          d="M10.5 11.5H15.5M17.5 13.5V11.65C17.5 11.5672 17.4328 11.5 17.35 11.5H15.5M15.5 11.5V13.5"
+          stroke="#e2e2e2"
+          stroke-linecap="round"
+        />
+      </svg>
+    </a>
+  </div>
+</section>
+
+<section class="cards_container">
+  <dialog id="card_modal" #card_modal class="dialog">
+    <form action="">
+      <h2>Enter your master password to delete the selected entry:</h2>
+      <input
+        type="password"
+        placeholder="Master Password"
+        id="landing_master_password"
+      />
+
+      <div>
+        <button class="button submit" (click)="closeModal($event)">
+          Continue
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <ul>
+    <app-card
+      *ngFor="let entry of entries"
+      website_url="{{ entry.site_url }}"
+      website_name="{{ entry.site_name }}"
+      [password_quantity]="1"
+      image_link="{{ entry.site_image }}"
+      item_id="{{ entry.id }}"
+    />
+
+    <h4 *ngIf="entries.length === 0 && isUser === false">
+      <img src="../../assets/sign_in.svg" alt="Sign In" />
+      Sign in and to see your entries ...
+    </h4>
+
+    <h4 *ngIf="isUser && entries.length === 0">
+      <img src="../../assets/no_data.svg" alt="Sign In" />
+      You don't have any entries
+    </h4>
+  </ul>
+</section>

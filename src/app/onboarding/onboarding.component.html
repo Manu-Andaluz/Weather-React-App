@@ -1,0 +1,18 @@
+<app-navbar />
+<section class="onboarding">
+  <h1>Welcome to the onboarding !!</h1>
+  <h2>Now you must set your master password to store your entries</h2>
+
+  <form action="">
+    <input
+      type="password"
+      placeholder="Master Password"
+      name="master_password"
+      id="master_password"
+    />
+
+    <button class="button submit" (click)="setMasterPassword($event)">
+      Continue
+    </button>
+  </form>
+</section>

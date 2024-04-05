@@ -1,0 +1,54 @@
+@import "../../variables";
+
+.landing_nav {
+  margin: auto;
+  padding-inline: 24px;
+  height: 70px;
+  align-items: center;
+  border-bottom: 1px solid $primary-border;
+  animation: fadeIn 500ms ease;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: auto;
+    align-items: center;
+    height: 100%;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 24px;
+        color: $secondary-color;
+        opacity: 1;
+      }
+
+      svg,
+      img {
+        margin-left: 6px;
+        width: 30px;
+        height: auto;
+      }
+    }
+
+    ul {
+      display: flex;
+      align-items: center;
+      list-style: none;
+
+      li {
+        a {
+          font-size: 16px;
+          text-decoration: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
