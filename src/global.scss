@@ -29,6 +29,21 @@ html {
   -webkit-overflow-scrolling: touch;
 }
 
+ion-content {
+  overflow-scroll: true;
+}
+
+.scroll-content {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
+  -ms-user-select: auto !important;
+  user-select: auto !important;
+}
+
+.selectable {
+  -webkit-user-select: auto;
+}
+
 @keyframes fadeIn {
   from {
     opacity: 0;
