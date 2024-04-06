@@ -101,4 +101,19 @@ export class EntryComponent {
       dialog.showModal();
     });
   }
+
+  copyClipboard(value: string | undefined, element_id: string) {
+    if (value && element_id) {
+      // Copy the text inside the text field
+      navigator.clipboard.writeText(value);
+
+      // Alert the copied text
+      const tooltip = document.getElementById(element_id) as HTMLElement;
+      tooltip.innerText = `Copied !!`;
+
+      setTimeout(() => {
+        tooltip.innerText = `Copy to the clipboard`;
+      }, 2000);
+    }
+  }
 }

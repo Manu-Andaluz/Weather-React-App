@@ -6,8 +6,22 @@
     <h1>{{ entry?.site_name }}</h1>
 
     <ul>
-      <li><span>Site url: </span>{{ entry?.site_url }}</li>
-      <li><span>Email: </span> {{ entry?.email }}</li>
+      <li>
+        <span>Site url: </span>
+        <a href="{{ entry?.site_url }}">{{ entry?.site_url }}</a>
+      </li>
+      <li>
+        <span>Email: </span> {{ entry?.email }}
+        <button
+          class="button outlined tooltip"
+          (click)="copyClipboard(entry?.email, 'email_clipboard')"
+        >
+          Copy
+          <span class="tooltiptext" id="email_clipboard"
+            >Copy to the clipboard</span
+          >
+        </button>
+      </li>
       <li>
         <span>Password: </span>
         <p>{{ entry?.password }}</p>
@@ -32,6 +46,16 @@
           <path d="M9 12L8.5 13" stroke="#e2e2e2" stroke-linecap="round" />
           <path d="M15 12L15.5 13" stroke="#e2e2e2" stroke-linecap="round" />
         </svg>
+
+        <button
+          class="button outlined tooltip"
+          (click)="copyClipboard(entry?.password, 'password_clipboard')"
+        >
+          Copy
+          <span class="tooltiptext" id="password_clipboard"
+            >Copy to the clipboard</span
+          >
+        </button>
       </li>
     </ul>
   </div>
