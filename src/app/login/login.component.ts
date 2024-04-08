@@ -24,8 +24,6 @@ export class LoginComponent {
     const form = document.getElementById('login_form') as HTMLFormElement;
     const formData = new FormData(form) as any;
 
-    console.log(formData.get('username'));
-
     if (!formData.get('username')) {
       this.errors.username = 'Username required';
     } else {

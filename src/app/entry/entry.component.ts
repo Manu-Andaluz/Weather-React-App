@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EntryDetailsService } from '../services/EntryDetails/entry-details.service';
 import { ActivatedRoute } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
+import { EditEntryService } from '../services/EditEntry/edit-entry.service';
 
 @Component({
   selector: 'app-entry',
@@ -15,7 +16,8 @@ import { jwtDecode } from 'jwt-decode';
 export class EntryComponent {
   constructor(
     private service: EntryDetailsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private edit: EditEntryService
   ) {}
   entry_id: string = '';
   entry?: Entry;
@@ -45,7 +47,6 @@ export class EntryComponent {
         })
         .subscribe(
           (response: any) => {
-            console.log(response);
             this.entry = response.data[0];
           },
           (error: any) => {
@@ -92,7 +93,6 @@ export class EntryComponent {
         const master_password_input = document.getElementById(
           'entry_master_password'
         ) as any;
-        console.log(master_password_input.value);
         this.master_password = master_password_input.value;
         resolve();
       };
@@ -102,18 +102,37 @@ export class EntryComponent {
     });
   }
 
-  copyClipboard(value: string | undefined, element_id: string) {
-    if (value && element_id) {
-      // Copy the text inside the text field
-      navigator.clipboard.writeText(value);
+  showInput() {
+    const image_input = document.getElementById(
+      'hiiden_div'
+    ) as HTMLInputElement;
+    image_input.style.display = 'flex';
+  }
 
-      // Alert the copied text
-      const tooltip = document.getElementById(element_id) as HTMLElement;
-      tooltip.innerText = `Copied !!`;
-
-      setTimeout(() => {
-        tooltip.innerText = `Copy to the clipboard`;
-      }, 2000);
+  async editEntry() {
+    if (!this.master_password) {
+      await this.getModalValue();
     }
+    const token = localStorage.getItem('guardkey_session_token') as string;
+    const input = document.getElementById(
+      'input_site_image'
+    ) as HTMLInputElement;
+    const decodedToken = jwtDecode(token) as any;
+
+    this.edit
+      .postRequest({
+        master_password: this.master_password || '',
+        user_id: decodedToken.user_id || '',
+        site_image: input.value,
+        site_id: Number(this.entry?.id) || 0,
+      })
+      .subscribe(
+        (response: any) => {
+          this.entry = response.data[0];
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
   }
 }

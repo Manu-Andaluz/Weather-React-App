@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class DeleteEntryService {
-  private path = `https://manuandaluz.pythonanywhere.com/manager/delete-entry/`;
+  private path = `${environment.apiPath}/manager/delete-entry/`;
 
   constructor(private httpClient: HttpClient) {}
 

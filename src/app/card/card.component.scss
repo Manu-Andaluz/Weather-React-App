@@ -6,6 +6,12 @@
   border: 1px solid $primary-border;
   border-radius: 4px;
   animation: fadeIn 500ms ease;
+  transition: box-shadow 500ms ease;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(197, 197, 197, 0.35) 0px 5px 15px;
+  }
 
   @media (max-width: 430px) {
     width: 300px;

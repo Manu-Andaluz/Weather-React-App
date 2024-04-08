@@ -1,4 +1,4 @@
-<li class="card">
+<li class="card" routerLink="/entry/{{ website_name }}">
   <img src="{{ image_link }}" alt="Website Image" />
 
   <div class="card_info">
@@ -33,7 +33,7 @@
         </svg>
       </button>
       <a routerLink="/entry/{{ website_name }}" class="button lined">Edit</a>
-      <button (click)="deleteEntry(website_name)" class="button lined">
+      <button (click)="deleteEntry(website_name, $event)" class="button lined">
         Delete
       </button>
     </div>

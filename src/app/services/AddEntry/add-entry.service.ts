@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class AddEntryService {
-  private path = `https://manuandaluz.pythonanywhere.com/manager/create-entry/`;
+  private path = `${environment.apiPath}/manager/create-entry/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json', // Example header
   });

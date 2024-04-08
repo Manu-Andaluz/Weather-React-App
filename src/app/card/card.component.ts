@@ -16,7 +16,7 @@ export class CardComponent {
   @Input() website_url: string = '';
   @Input() password_quantity: number = 1;
   @Input() item_id?: string;
-  @Output() eventClick: EventEmitter<any> = new EventEmitter();
+  @Output() onClick: EventEmitter<any> = new EventEmitter();
   private master_password: string | undefined = undefined;
 
   constructor(private service: DeleteEntryService) {}
@@ -35,7 +35,11 @@ export class CardComponent {
       );
   }
 
-  async deleteEntry(search: string) {
+  async deleteEntry(search: string, event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+
     if (!this.master_password) {
       await this.getModalValue(search);
     }

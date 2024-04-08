@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreatePasswordComponent } from './create-password/create-password.component';
 import { OnboardingComponent } from './onboarding/onboarding.component';
 import { EntryComponent } from './entry/entry.component';
 import { GeneratePasswordComponent } from './generate-password/generate-password.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },

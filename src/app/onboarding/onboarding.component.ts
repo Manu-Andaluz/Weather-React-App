@@ -31,8 +31,6 @@ export class OnboardingComponent {
     if (decodedToken) {
       this.service.postRequest(decodedToken.user_id, input.value).subscribe(
         (response: any) => {
-          console.log(response);
-
           this.refresh_service.postRequest(token).subscribe((response: any) => {
             localStorage.setItem('guardkey_session_token', response.token);
             this.router.navigateByUrl('/');

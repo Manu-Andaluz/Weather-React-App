@@ -25,8 +25,6 @@ export class RegisterComponent {
     const form = document.getElementById('register_form') as HTMLFormElement;
     const formData = new FormData(form) as any;
 
-    console.log(formData.get('username'));
-
     if (!formData.get('username')) {
       this.errors.username = 'Username required';
     } else {

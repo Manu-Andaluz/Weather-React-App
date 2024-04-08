@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class MasterPasswordService {
-  private path = `https://manuandaluz.pythonanywhere.com/manager/create-master-password/`;
+  private path = `${environment.apiPath}/manager/create-master-password/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

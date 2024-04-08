@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RegisterService {
-  private path = `https://manuandaluz.pythonanywhere.com/auth/register/`;
+  private path = `${environment.apiPath}/auth/register/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

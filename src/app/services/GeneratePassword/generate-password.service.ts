@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class GeneratePasswordService {
-  private path = `https://manuandaluz.pythonanywhere.com/manager/generate-password/`;
+  private path = `${environment.apiPath}/manager/generate-password/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
