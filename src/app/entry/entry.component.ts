@@ -19,7 +19,7 @@ export class EntryComponent {
     private route: ActivatedRoute,
     private edit: EditEntryService
   ) {}
-  entry_id: string = '';
+  entry_id?: number;
   entry?: Entry;
   private master_password?: string = undefined;
 
@@ -27,7 +27,7 @@ export class EntryComponent {
     search = this.entry_id,
     fromModal = false,
   }: {
-    search?: string;
+    search?: number | undefined;
     fromModal?: boolean;
   }) {
     const token = localStorage.getItem('guardkey_session_token') as string;
@@ -39,20 +39,22 @@ export class EntryComponent {
 
       const decodedToken = jwtDecode(token) as any;
 
-      this.service
-        .postRequest({
-          master_password: this.master_password,
-          search: search,
-          user_id: decodedToken.user_id,
-        })
-        .subscribe(
-          (response: any) => {
-            this.entry = response.data[0];
-          },
-          (error: any) => {
-            console.log(error);
-          }
-        );
+      if (search) {
+        this.service
+          .postRequest({
+            master_password: this.master_password,
+            search: search,
+            user_id: decodedToken.user_id,
+          })
+          .subscribe(
+            (response: any) => {
+              this.entry = response.data[0];
+            },
+            (error: any) => {
+              console.log(error);
+            }
+          );
+      }
     }
   }
 
@@ -134,5 +136,19 @@ export class EntryComponent {
           console.log(error);
         }
       );
+  }
+
+  copyClipboard(value_to_copy?: string, element_id?: string) {
+    // Copy the text inside the text field
+    if (value_to_copy && element_id) {
+      navigator.clipboard.writeText(value_to_copy);
+      // Alert the copied text
+      const tooltip = document.getElementById(element_id) as HTMLElement;
+      tooltip.innerText = `Copied !!`;
+
+      setTimeout(() => {
+        tooltip.innerText = `Copy`;
+      }, 2000);
+    }
   }
 }

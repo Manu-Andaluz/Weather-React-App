@@ -40,11 +40,45 @@
     <h1>{{ entry?.site_name }}</h1>
 
     <ul>
-      <li><span>Site url: </span>{{ entry?.site_url }}</li>
-      <li><span>Email: </span> {{ entry?.email }}</li>
-      <li>
+      <li
+        (click)="copyClipboard(entry?.site_url, 'site_url_tooltip')"
+        class="tooltip"
+      >
+        <span>Site url: </span>
+        <p>
+          {{ entry?.site_url }}
+          <span class="tooltiptext" id="site_url_tooltip">Copy</span>
+        </p>
+      </li>
+      <li
+        class="tooltip"
+        (click)="copyClipboard(entry?.email, 'email_tooltip')"
+      >
+        <span>Email: </span>
+        <p>
+          {{ entry?.email }}
+          <span class="tooltiptext" id="email_tooltip">Copy</span>
+        </p>
+      </li>
+      <li
+        class="tooltip"
+        (click)="copyClipboard(entry?.username, 'username_tooltip')"
+      >
+        <span>Username: </span>
+        <p>
+          {{ entry?.username }}
+          <span class="tooltiptext" id="username_tooltip">Copy</span>
+        </p>
+      </li>
+      <li
+        class="tooltip"
+        (click)="copyClipboard(entry?.password, 'password_tooltip')"
+      >
         <span>Password: </span>
-        <p>{{ entry?.password }}</p>
+        <p class="password_text">
+          {{ entry?.password }}
+          <span class="tooltiptext" id="password_tooltip">Copy</span>
+        </p>
         <svg
           width="30"
           height="30"

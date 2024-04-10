@@ -15,13 +15,13 @@ export class CardComponent {
   @Input() website_name: string = '';
   @Input() website_url: string = '';
   @Input() password_quantity: number = 1;
-  @Input() item_id?: string;
+  @Input() entry_id?: number | any;
   @Output() onClick: EventEmitter<any> = new EventEmitter();
   private master_password: string | undefined = undefined;
 
   constructor(private service: DeleteEntryService) {}
 
-  deleteRequest(master_password: string, search: string, user_id: number) {
+  deleteRequest(master_password: string, search: number, user_id: number) {
     return this.service
       .deleteRequest(master_password, search, user_id)
       .subscribe(
@@ -35,30 +35,32 @@ export class CardComponent {
       );
   }
 
-  async deleteEntry(search: string, event?: Event) {
+  async deleteEntry(search?: number, event?: Event) {
     if (event) {
       event.stopPropagation();
     }
 
-    if (!this.master_password) {
-      await this.getModalValue(search);
+    if (search) {
+      if (!this.master_password) {
+        await this.getModalValue(search);
+      }
+
+      const token = localStorage.getItem('guardkey_session_token') as string;
+
+      if (token) {
+        const decodedtoken = jwtDecode(token) as any;
+        this.deleteRequest(
+          this.master_password || '',
+          search,
+          decodedtoken.user_id
+        );
+      }
+
+      return;
     }
-
-    const token = localStorage.getItem('guardkey_session_token') as string;
-
-    if (token) {
-      const decodedtoken = jwtDecode(token) as any;
-      this.deleteRequest(
-        this.master_password || '',
-        search,
-        decodedtoken.user_id
-      );
-    }
-
-    return;
   }
 
-  getModalValue(search: string) {
+  getModalValue(search?: number) {
     const dialog = document.getElementById('card_modal') as HTMLDialogElement;
 
     return new Promise<void>((resolve) => {

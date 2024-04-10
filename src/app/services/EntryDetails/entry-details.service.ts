@@ -14,7 +14,7 @@ export class EntryDetailsService {
   constructor(private httpClient: HttpClient) {}
 
   postRequest(body: {
-    search: string;
+    search: number;
     master_password?: string;
     user_id: number;
   }) {
