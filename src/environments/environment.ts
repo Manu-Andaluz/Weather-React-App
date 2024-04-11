@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiPath: 'http://3.149.245.120:8000',
+  apiPath: 'http://3.142.130.166:8000',
 };
 
 /*
