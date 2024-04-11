@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class MasterPasswordService {
-  private path = `${environment.apiPath}/manager/create-master-password/`;
+  private path = `http://3.142.130.166:8000/manager/create-master-password/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

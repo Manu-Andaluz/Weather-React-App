@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class EntryDetailsService {
-  private path = `${environment.apiPath}/manager/retrieve-entries/`;
+  private path = `http://3.142.130.166:8000/manager/retrieve-entries/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

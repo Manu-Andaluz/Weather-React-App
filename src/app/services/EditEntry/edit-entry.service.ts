@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class EditEntryService {
-  private path = `${environment.apiPath}/manager/edit-entry/`;
+  private path = `http://3.142.130.166:8000/manager/edit-entry/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

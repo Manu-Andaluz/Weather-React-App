@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class AddEntryService {
-  private path = `${environment.apiPath}/manager/create-entry/`;
+  private path = `http://3.142.130.166:8000/manager/create-entry/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json', // Example header
   });

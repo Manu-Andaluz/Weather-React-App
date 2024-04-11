@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RefreshTokenService {
-  private path = `${environment.apiPath}/auth/refresh-token/`;
+  private path = `http://3.142.130.166:8000/auth/refresh-token/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

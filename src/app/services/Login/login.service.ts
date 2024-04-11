@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class LoginService {
-  private path = `${environment.apiPath}/auth/login/`;
+  private path = `http://3.142.130.166:8000/auth/login/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });

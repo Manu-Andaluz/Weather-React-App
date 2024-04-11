@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class DeleteEntryService {
-  private path = `${environment.apiPath}/manager/delete-entry/`;
+  private path = `http://3.142.130.166:8000/manager/delete-entry/`;
 
   constructor(private httpClient: HttpClient) {}
 

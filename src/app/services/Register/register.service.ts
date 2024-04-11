@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root',
 })
 export class RegisterService {
-  private path = `${environment.apiPath}/auth/register/`;
+  private path = `http://3.142.130.166:8000/auth/register/`;
   private headers = new HttpHeaders({
     'Content-Type': 'application/json',
   });
